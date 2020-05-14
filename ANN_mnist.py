@@ -109,8 +109,11 @@ model.compile(optimizer = Adam(), loss = 'categorical_crossentropy', metrics = [
 
 
 model.fit(x_train , y_train , epochs= 20)
-print(model.evaluate(x_train,y_train)[1])
-
+file2 = open("test_accuracy.txt","w+")
+x = str(model.evaluate(x_train,y_train)[1])
+print(x)
+file2.write(x)
+file2.close()
 
 # In[18]:
 
