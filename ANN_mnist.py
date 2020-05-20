@@ -66,7 +66,7 @@ try:
     print(x)
     file2.write(x)
     file2.close()
-    save_model(model, "mymodel.h5",overwrite = True)
+    save_model(model, "mymodel",overwrite = True)
 except:
 
     from keras.models import Sequential
