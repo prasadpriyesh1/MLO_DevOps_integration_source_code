@@ -54,7 +54,7 @@ from keras.optimizers import Adam
 
 
 y_train = to_categorical(y_train)
-model = load_model("mymodel.h5")
+model = load_model("mymodel")
 file = open("model.txt","r")
 if file.readline() == "ANN":
     code = ANN(model)
