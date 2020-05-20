@@ -57,7 +57,7 @@ y_train = to_categorical(y_train)
 try:
     from keras.models import load_model
     
-    model = load_model("mymodel.h5")
+    model = load_model("/source_code/mymodel.h5")
     print("model loaded")
     model.compile(optimizer = Adam(), loss = 'categorical_crossentropy', metrics = ['accuracy'])
     model.fit(x_train , y_train , epochs= 20)
