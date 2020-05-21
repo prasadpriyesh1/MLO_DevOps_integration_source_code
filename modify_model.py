@@ -8,40 +8,39 @@ from ANN_modify import ANN
 from CNN_modify import CNN
 from sklearn_modify import SKLEARN
 from keras.models import load_model
-from keras.datasets import fashion_mnist
+#from keras.datasets import fashion_mnist
 from keras.models import save_model
 
 # In[2]:
 
 
-dataset = fashion_mnist.load_data()
+#dataset = fashion_mnist.load_data()
 
 
 # In[3]:
 
 
-train , test = dataset
+#train , test = dataset
 
 
 # In[4]:
 
 
-x_train , y_train = train
-x_test , y_test = test
+#x_train , y_train = train
+#x_test , y_test = test
 
 
 # In[5]:
 
 
-x_train_1D = x_train.reshape(-1 , 28*28)
-x_test_1D = x_test.reshape(-1 , 28*28)
+#x_test_1D = x_test.reshape(-1 , 28*28)
 
 
 # In[6]:
 
 
-x_train = x_train_1D.astype('float32')
-x_test = x_test_1D.astype('float32')
+#x_train = x_train_1D.astype('float32')
+#x_test = x_test_1D.astype('float32')
 
 
 # In[7]:
