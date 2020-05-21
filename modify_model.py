@@ -52,7 +52,7 @@ from keras.optimizers import Adam
 # In[8]:
 
 
-y_train = to_categorical(y_train)
+#y_train = to_categorical(y_train)
 model = load_model("mymodel.h5")
 file = open("model.txt","r")
 if file.readline() == "ANN":
