@@ -81,6 +81,7 @@ class ANN:
                 x = Dense(n3 , activation = "relu",name = s)(a)
                 x = Dense(10, activation ="softmax")(a)
                 self.model2 = Model(input = self.model.input, outputs = x)
+            self.model2.compile(optimizer = Adam(), loss = 'categorical_crossentropy', metrics = ['accuracy'])
         return self.model2
         
 #    def save_model_f(self):

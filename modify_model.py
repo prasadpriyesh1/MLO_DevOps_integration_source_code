@@ -67,7 +67,7 @@ if file.readline() == "SKLEARN":
     code = SKLEARN(model)
 file.close()
 new_model = code.change_model()
-new_model.compile(optimizer = Adam(), loss = 'categorical_crossentropy', metrics = ['accuracy'])
+
 save_model(new_model, "mymodel.h5",overwrite = True)
 #new_model.fit(x_train , y_train , epochs= 20)
 #save_model(new_model, "mymodel.h5",overwrite = True)
