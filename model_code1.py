@@ -60,7 +60,7 @@ try:
     model = load_model("mymodel.h5")
     print("model loaded")
     #model.compile(optimizer = Adam(), loss = 'categorical_crossentropy', metrics = ['accuracy'])
-    model.fit(x_train , y_train , epochs= 15)
+    model.fit(x_train , y_train , epochs= 10)
     file2 = open("accuracy.txt","w+")
     x = str(model.evaluate(x_train,y_train)[1])
     print(x)
@@ -122,7 +122,7 @@ except:
     # In[17]:
     
     
-    model.fit(x_train , y_train , epochs= 15)
+    model.fit(x_train , y_train , epochs= 10)
     file2 = open("accuracy.txt","w+")
     x = str(model.evaluate(x_train,y_train)[1])
     print(x)
