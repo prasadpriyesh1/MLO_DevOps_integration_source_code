@@ -18,6 +18,7 @@ try:
         file.write("CNN")
     file.close()
 except:
+    import sklearn
     import pickle
     pickle.load(open("mymodel.h5","rb"))
     file = open("model.txt","w+")
