@@ -46,28 +46,38 @@ from keras.models import save_model
 # In[7]:
 
 
-from keras.utils.np_utils import to_categorical
-from keras.optimizers import Adam
+import pickle
 
 # In[8]:
 
 
 #y_train = to_categorical(y_train)
-model = load_model("mymodel.h5")
+
 file = open("model.txt","r")
 if file.readline() == "ANN":
+    model = load_model("mymodel.h5")
     code = ANN(model)
+    new_model = code.change_model()
+
+    save_model(new_model, "mymodel.h5",overwrite = True)
 file.close()
 file = open("model.txt","r")
 if file.readline() == "CNN":
+    model = load_model("mymodel.h5")
     code = CNN(model)
+    new_model = code.change_model()
+
+    save_model(new_model, "mymodel.h5",overwrite = True)
 file.close()
 file = open("model.txt","r")
 if file.readline() == "SKLEARN":
+    model = pickle.load(open("mymodel.h5","rb"))
     code = SKLEARN(model)
+    new_model = code.change_model()
+    pickle.dump(new_model , open("mymodel.h5","wb"))
 file.close()
-new_model = code.change_model()
 
-save_model(new_model, "mymodel.h5",overwrite = True)
+
+
 #new_model.fit(x_train , y_train , epochs= 20)
 #save_model(new_model, "mymodel.h5",overwrite = True)
