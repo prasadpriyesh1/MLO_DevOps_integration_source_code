@@ -54,35 +54,42 @@ class ANN:
     def __init__ (self,model):
         self.model = model 
     def change_model(self):
-        n = len(self.model.layers)
-        if self.model.layers[-2].units * (2**(n-2)) == 256:
-            if 256 / (2**(n-1)) >10:
-                a = self.model.get_layer("layer"+str(n-1))
-                s = "layer"+str(n)
-                x = Dense(8 , activation ="relu", name = s)(a)
-                
-                x = Dense(10, activation ="softmax")(a)
-                self.model2 = Model(input = self.model.input, outputs = x)
-        else:
-            n1 = self.model.layers[-2].units
-            if n == 2:
-                
-                
-                n3= n1 + 8
-                s = "layer1"
-                x = Sequential()
-                x.add(Dense(n3 ,input_dim =28*28,  activation = "relu",name = s))
-                x.add(Dense(10, activation ="softmax"))
-                self.model2 = x 
-            else:
-                s = "layer"+str(n-1)
-                a = self.model.get_layer(s)
-                n3 = n1 + 8
-                x = Dense(n3 , activation = "relu",name = s)(a)
-                x = Dense(10, activation ="softmax")(a)
-                self.model2 = Model(input = self.model.input, outputs = x)
+        n=0
+        n2 = len(self.model.layers)
+        for x in self.model.layers:
+            if x.__class__.__name__ == "Dense":
+                n +=1
+        if n <=6:
+            self.model2 = Sequential()
+            for x in range(n2-n,n2-1):
+                if x == (n2-2):
+                    p = self.model.layers[x].units * (2**(x - (n2-n)))
+                    if p == 256 and (self.model.layers[x].units/2 >10):
+                        if x ==  n2-n:
+                            self.model2.add(Dense(units = 256,input_dim =28*28,activation = "relu" ))
+                        else:
+                            self.model2.add(Dense(units = self.model.layers[x].units,activation = "relu" ))
+                        self.model2.add(Dense(units = 8,activation ="relu"))
+                    elif p<256:
+                        k = self.model.layers[x].units + 8
+                        if x ==  n2-n:
+                            self.model2.add(Dense(units = k,input_dim =28*28,activation = "relu" ))
+                        else:
+                            self.model2.add(Dense(units = k,activation = "relu" ))
+                    else:
+                        self.model2.add(Dense(units = 16, activation = "relu"))
+                else:
+                    k = self.model.layers[x].units
+                    if x ==  n2-n:
+                        self.model2.add(Dense(units = k,input_dim =28*28,activation = "relu" ))
+                    else:
+                        self.model2.add(Dense(units = k,activation = "relu" ))
+            self.model2.add(Dense(units = 10 , activation = 'softmax'))
+            self.model2.summary()
             self.model2.compile(optimizer = Adam(), loss = 'categorical_crossentropy', metrics = ['accuracy'])
-        return self.model2
+            return self.model2
+        else:
+            return self.model
         
 #    def save_model_f(self):
  #       save_model(self.model2, "mymodel.h5",overwrite = True)

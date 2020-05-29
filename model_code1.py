@@ -82,8 +82,8 @@ except:
     # In[11]:
     
     
-    model.add(Dense(units = 8,input_dim = 28*28 ,activation = 'relu',name ="layer1"))
-    #model.add(Dense(units = 128, activation = 'relu'))
+    model.add(Dense(units = 8,input_dim = 28*28 ,activation = 'relu',name ="layer0"))
+    #model.add(Dense(units = 128, activation = 'relu',name= "layer2"))
     #model.add(Dense(units = 64, activation = 'relu'))
     #model.add(Dense(units = 32, activation = 'relu'))
     #model.add(Dense(units = 16, activation = 'relu'))

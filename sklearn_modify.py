@@ -6,9 +6,10 @@ Created on Sat May 16 12:49:59 2020
 """
 
 class SKLEARN:
-    smodel = ""
+    model = ""
+    model2 = ""
     def __init__ (self,model):
-        self.smodel = model 
+        self.model = model 
     def change_model(self):
         pass
     def check_accuracy(self):
