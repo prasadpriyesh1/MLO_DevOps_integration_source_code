@@ -9,7 +9,7 @@ file = open("accuracy.txt")
 str = file.readline()
 n = float(str)
 
-if n >= 0.85:
+if n >= 0.82:
     print("greater")
     exit(1)
 else:
