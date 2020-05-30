@@ -154,10 +154,3 @@ except:
     
     
     #confusion_matrix(y_test , t1)
-    
-    
-    # In[ ]:
-
-
-
-
